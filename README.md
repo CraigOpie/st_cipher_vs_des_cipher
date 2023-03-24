@@ -2,6 +2,25 @@
 
 This README provides an overview of the differences between simple substitution-transposition (ST) ciphers and the Data Encryption Standard (DES) cipher. It includes explanations of key terms, the structure of a Feistel network, and how DES solves the problems posed by ST ciphers. Additionally, it references Python programs demonstrating ST and DES ciphers.
 
+## Initial Setup and Execution
+
+The Python applications have dependancies. The Python version used for development and testing is `Python 3.11.2`. Perform the following steps on the command line interface to prepare the python environment:
+
+### Linux/macOS
+
+1. `python3 -m venv env`
+1. `source env/bin/activate`
+1. `python3 -m pip install --upgrade pip`
+1. `pip3 install -r requirements.txt`
+
+### Windows
+
+1. `python -m venv env`
+1. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+1. `.\env\Scripts\activate`
+1. `python -m pip install --upgrade pip`
+1. `pip install -r requirements.txt`
+
 ## Key Terms
 
 - **Confusion**: The property of a cipher that obscures the relationship between the plaintext and the ciphertext, typically achieved through substitution.
