@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from Crypto.Cipher import DES
 from Crypto.Random import get_random_bytes
 from Crypto.Util.Padding import pad, unpad
