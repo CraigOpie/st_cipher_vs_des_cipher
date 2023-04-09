@@ -393,8 +393,8 @@ class DES:
     
 def main():
     """Main function."""
-    data = b'Please encrypt my data'
-    k = DES(key=b'BeTheKey')
+    data = b'HELLO, THIS IS A MESSAGE'
+    k = DES(key=b'BETHEKEY')
     d = k.encrypt(data)
     print(f'Plaintext: {data}')
     print(f'Ciphertext: {d}')
