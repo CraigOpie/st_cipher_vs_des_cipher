@@ -2,11 +2,15 @@
 import math
 
 def caesar_cipher(text, shift, mode):
-    """
-    Caesar cipher: a simple substitution cipher
-    - text: input string (plaintext or ciphertext)
-    - shift: number of positions each character is shifted
-    - mode: 'encrypt' or 'decrypt'
+    """Encrypt or decrypt a string using the Caesar cipher.
+
+    Args:
+        text (str): The text to be encrypted or decrypted.
+        shift (int): The shift value for the Caesar cipher.
+        mode (str): The mode of operation ('encrypt' or 'decrypt').
+
+    Returns:
+        str: The encrypted or decrypted text.
     """
     result = ""
     shift = -shift if mode == 'decrypt' else shift
@@ -20,11 +24,15 @@ def caesar_cipher(text, shift, mode):
     return result
 
 def columnar_transposition(text, key, mode):
-    """
-    Columnar transposition cipher: a simple transposition cipher
-    - text: input string (plaintext or ciphertext)
-    - key: string representing the transposition key
-    - mode: 'encrypt' or 'decrypt'
+    """Encrypt or decrypt a string using the columnar transposition cipher.
+
+    Args:
+        text (str): The text to be encrypted or decrypted.
+        key (str): The key for the columnar transposition cipher.
+        mode (str): The mode of operation ('encrypt' or 'decrypt').
+
+    Returns:
+        str: The encrypted or decrypted text.
     """
     key_order = sorted(range(len(key)), key=lambda x: key[x])
     num_columns = len(key)
@@ -49,12 +57,16 @@ def columnar_transposition(text, key, mode):
         return ''.join([''.join(row) for row in zip(*text_segments)])
 
 def st_cipher(text, substitution_key, transposition_key, mode):
-    """
-    ST cipher: combines Caesar cipher (substitution) and columnar transposition cipher (transposition)
-    - text: input string (plaintext or ciphertext)
-    - substitution_key: integer representing the shift for the Caesar cipher
-    - transposition_key: string representing the transposition key for the columnar transposition cipher
-    - mode: 'encrypt' or 'decrypt'
+    """Encrypt or decrypt a string using a substitution-transposition cipher.
+
+    Args:
+        text (str): The text to be encrypted or decrypted.
+        substitution_key (int): The key for the Caesar substitution cipher.
+        transposition_key (str): The key for the columnar transposition cipher.
+        mode (str): The mode of operation ('encrypt' or 'decrypt').
+
+    Returns:
+        str: The encrypted or decrypted text.
     """
     if mode == 'encrypt':
         substituted = caesar_cipher(text, substitution_key, mode)
@@ -63,12 +75,19 @@ def st_cipher(text, substitution_key, transposition_key, mode):
         transposed = columnar_transposition(text, transposition_key, mode)
         return caesar_cipher(transposed, substitution_key, mode)
 
-plaintext = "HELLO, THIS IS A MESSAGE"
-substitution_key = 3
-transposition_key = "KEY"
+def main():
+    """Main function."""
+    plaintext = 'HELLO, THIS IS A MESSAGE'
+    substitution_key = 3
+    transposition_key = 'KEY'
 
-ciphertext = st_cipher(plaintext, substitution_key, transposition_key, 'encrypt')
-print(f"Ciphertext: {ciphertext}")
+    print(f'Plaintext: {plaintext}')
 
-decrypted_text = st_cipher(ciphertext, substitution_key, transposition_key, 'decrypt')
-print(f"Decrypted text: {decrypted_text}")
+    ciphertext = st_cipher(plaintext, substitution_key, transposition_key, 'encrypt')
+    print(f'Ciphertext: {ciphertext}')
+
+    decrypted_text = st_cipher(ciphertext, substitution_key, transposition_key, 'decrypt')
+    print(f'Decrypted text: {decrypted_text}')
+
+if __name__ == "__main__":
+    main()

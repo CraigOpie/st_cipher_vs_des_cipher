@@ -59,7 +59,7 @@ It's important to note that despite addressing the weaknesses of ST ciphers, DES
 
 ### Python Code for DES Cipher
 
-A Python program demonstrating the DES cipher using the **`pycryptodome`** library can be found in the **`des_cipher.py`** file. The program illustrates how to use the library for encryption and decryption with DES, while addressing the problems posed by ST ciphers.
+A Python program demonstrating the DES cipher can be found in the **`des_cipher.py`** file. The program illustrates how to use the library for encryption and decryption with DES, while addressing the problems posed by ST ciphers.
 
 ## Feistel Network Structure
 
