@@ -167,7 +167,7 @@ class DES:
         """
         key = self.ensure_ascii_encoded(key)
         self._key = key
-        self._create_sub_keys()
+        self.create_sub_keys()
 
     @property
     def pad_mode(self) -> int:
@@ -283,7 +283,7 @@ class DES:
         """
         return [block[x] for x in table]
 
-    def _create_sub_keys(self) -> None:
+    def create_sub_keys(self) -> None:
         """Create 16 subkeys using the key."""
         key = self.permutate(DES.Blocks.pc1, self.string_to_bitlist(self.key))
         self.L, self.R = key[:DES.HALF_KEY_SIZE], key[DES.HALF_KEY_SIZE:]
